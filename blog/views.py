@@ -141,6 +141,9 @@ class LikeUpdateDeleteRetrieveAPI(generics.RetrieveUpdateDestroyAPIView):
 
 
 class PostListAPI(generics.ListAPIView):
+    """
+    API to list post details
+    """
     serializer_class = PostListSerializer
     filter_backends = [filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend]
     search_fields = ['title', 'author__first_name', 'author__last_name']
@@ -149,16 +152,21 @@ class PostListAPI(generics.ListAPIView):
 
 
     def get_queryset(self):
+        """
+        override method to modify the queryset
+        """
         queryset = Post.objects.annotate(num_likes=Count('liked_post')).select_related('author')
         if self.request.user.is_authenticated:
             if self.request.user.has_perm('blog.list_post'):
                 queryset = queryset.filter(Q(author=self.request.user) | Q(type='public'))
         else:
             queryset = queryset.filter(type='public')
-        
         return queryset
 
     def list(self, request, *args, **kwargs):
+        """
+        function to display list of post
+        """
         queryset = self.filter_queryset(self.get_queryset())
 
         page = self.paginate_queryset(queryset)

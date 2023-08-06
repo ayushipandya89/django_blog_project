@@ -89,6 +89,7 @@ class PostListSerializer(serializers.ModelSerializer):
     """
     author = UserDataSerializer()
     num_likes = serializers.IntegerField()
+    
     class Meta:
         model = Post
         fields = ['id', 'title', 'content', 'date_posted', 'author', 'type', 'num_likes']
