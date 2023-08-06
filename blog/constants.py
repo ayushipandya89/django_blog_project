@@ -1,0 +1,7 @@
+POST_CREATED_SUCCESSFULLY = 'Post created successfully!!'
+POST_UPDATED_SUCCESSFULLY = 'Post updated successfully!!'
+POST_DELETED_SUCCESSFULLY = 'Post deleted successfully!!'
+LIKE_SAVED_SUCCESSFULLY = 'Like saved successfully!!'
+LIKE_UPDATED_SUCCESSFULLY = 'Like updated successfully!!'
+LIKE_DELETED_SUCCESSFULLY = 'Like deleted successfully!!'
+ALREADY_LIKED_POST = 'You have already like the post.'
